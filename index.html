@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>사과 게임</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div id="score-display"><span id="score">0</span></div>
+        <div class="time-gauge-container">
+            <div id="time-gauge"></div>
+        </div>
+        <!-- ★★★ 수정됨: #game-board 안에 div.board-wrapper 추가 ★★★ -->
+        <div id="game-board">
+            <div class="board-wrapper">
+                <div id="apple-container">
+                    <div id="selection-box"></div>
+                    <!-- 사과는 JS로 여기에 추가됩니다 -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="overlay">
+        <div id="start-screen"><h2>사과 숫자 게임</h2><p>드래그하여 숫자 합이 10이 되게 만드세요!</p><button id="start-button">게임 시작</button></div>
+        <div id="end-screen"><h2 id="end-title">게임 종료</h2><p id="end-message">최종 점수: <span id="final-score">0</span></p><button id="restart-button">다시 시작</button></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
