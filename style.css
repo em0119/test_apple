@@ -23,6 +23,9 @@ body { display: flex; justify-content: center; align-items: center; }
     max-height: 850px;
     align-items: center;
 
+    /* ★★★ 추가: 모든 자식 요소를 세로 중앙에 정렬 ★★★ */
+    justify-content: center; 
+
     /* ★★★ 수정: 기기가 알려주는 안전 영역 값을 자동으로 사용 ★★★ */
     padding-top: env(safe-area-inset-top, 20px);
     box-sizing: border-box;
@@ -59,7 +62,7 @@ body { display: flex; justify-content: center; align-items: center; }
 /* 게임 보드와 그리드 스타일 */
 #game-board {
     width: 100%;
-    flex-grow: 1;
+    /*flex-grow: 1;*/
     min-height: 0;
     display: grid;
     place-items: center;
