@@ -22,17 +22,18 @@ body { display: flex; justify-content: center; align-items: center; }
     height: 95vh;
     max-height: 850px;
     align-items: center;
-    gap: 10px;
 
     /* ★★★ 수정: 기기가 알려주는 안전 영역 값을 자동으로 사용 ★★★ */
     padding-top: env(safe-area-inset-top, 20px);
     box-sizing: border-box;
 }
 #score-display, .time-gauge-container { flex-shrink: 0; }
-#score-display { font-size: clamp(1.5em, 5vw, 2em); font-weight: bold; text-align: center; color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); }
+#score-display { font-size: clamp(1.5em, 5vw, 2em); font-weight: bold; text-align: center; color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+    /* ★★★ 추가: 점수와 게이지 사이의 간격을 5px로 설정 ★★★ */
+    margin-bottom: 20px; /* 이 숫자를 마음대로 조절하세요 */}
 .time-gauge-container {
-    width: 80%;
-    height: 20px; /* ★★★ 게이지 높이를 조금 더 키움 ★★★ */
+    width: 95%;
+    height: 16px; /* ★★★ 게이지 높이를 조금 더 키움 ★★★ */
     
     background-color: #72ae47; /* ★★★ 어두운 녹색 배경으로 변경 ★★★ */
     border-radius: 16px;
@@ -41,6 +42,9 @@ body { display: flex; justify-content: center; align-items: center; }
     
     /* 입체감을 주는 안쪽 그림자 효과 */
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+
+    /* ★★★ 추가: 게이지와 게임판 사이의 간격을 15px로 설정 ★★★ */
+    margin-bottom: 5px; /* 이 숫자를 마음대로 조절하세요 */
 }
 
 #time-gauge {
@@ -75,9 +79,9 @@ body { display: flex; justify-content: center; align-items: center; }
     position: relative; /* selection-box의 기준 */
 
     background-color: #f1f8e9;
-    border: 5px solid #558b2f;
+    border: 2px solid #7fb352;
     border-radius: 15px;
-    padding: 10px;
+    padding: 16px;
     box-sizing: border-box;
 
     display: grid;
@@ -90,7 +94,7 @@ body { display: flex; justify-content: center; align-items: center; }
     width: 100%; height: 100%; min-width: 0; min-height: 0;
     
     /* ★★★ 사과 배경에 방사형(동그란) 그라데이션 적용 ★★★ */
-    background: radial-gradient(circle at 65% 35%, #df7757, #d74442);
+    background: radial-gradient(circle at 65% 35%, #df7757, #d66664);
     
     border-radius: 50%;
     display: flex; justify-content: center; align-items: center;
@@ -147,7 +151,7 @@ body { display: flex; justify-content: center; align-items: center; }
     margin-bottom: 100px; /* 설명과 버튼 사이 간격 */
 
     -webkit-text-stroke: 0.1px rgba(0, 0, 0, 0.2); /* 1px 두께의 살짝 투명한 검은색 테두리 */
-    text-stroke: 0.1px rgba(137, 172, 1305, 0.2);
+    text-stroke: 0.1px rgba(137, 172, 130, 0.2);
 }
 
 /* 버튼 스타일 */
