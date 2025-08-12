@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const startButton = document.getElementById('start-button');
     const restartButton = document.getElementById('restart-button');
 
-    const GAME_TIME = 1000;
+    const GAME_TIME = 10;
     const TARGET_SUM = 10;
     
     let GRID_COLS, GRID_ROWS, TOTAL_APPLES;

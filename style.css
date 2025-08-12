@@ -133,7 +133,7 @@ body { display: flex; justify-content: center; align-items: center; }
 
 /* 제목 스타일 */
 #overlay h2 {
-    font-size: 2.5em;       /* 제목 크기 */
+    font-size: 2em;       /* 제목 크기 */
     margin-bottom: 20px;    /* 제목과 설명 사이 간격 */
 
     /* --- 그라데이션 적용 부분 --- */
@@ -145,8 +145,8 @@ body { display: flex; justify-content: center; align-items: center; }
 
 /* 설명 스타일 */
 #overlay p {
-    font-size: 1.5em; /* 설명 크기 */
-    color: #7fb352;
+    font-size: 1.2em; /* 설명 크기 */
+    color: #94c56a;
     line-height: 1.5;
     margin-bottom: 100px; /* 설명과 버튼 사이 간격 */
 
@@ -157,16 +157,16 @@ body { display: flex; justify-content: center; align-items: center; }
 /* 버튼 스타일 */
 #overlay button {
     font-family: 'ONE-Mobile-POP', sans-serif;
-    padding: 20px 60px;
-    font-size: 1.5em;
+    padding: 16px 48px;
+    font-size: 1.2em;
     font-weight: bold;
     color: #ffffff; /* 버튼 안의 글씨색은 흰색으로 유지 */
     
     border-radius: 50px;
-    border: 3px solid #fff; /* 테두리는 흰색으로 하면 더 예뻐요 */
+    border: 2px solid #fff; /* 테두리는 흰색으로 하면 더 예뻐요 */
     
     -webkit-text-stroke: 0.1px rgba(0, 0, 0, 0.2); /* 1px 두께의 살짝 투명한 검은색 테두리 */
-    text-stroke: 0.1px rgba(137, 172, 1305, 0.2);
+    text-stroke: 0.1px rgba(137, 172, 130, 0.2);
 
     /* --- 그라데이션 적용 부분 --- */
     background: linear-gradient(45deg, #aed581, #8bc34a);
