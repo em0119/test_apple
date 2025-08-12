@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'ONE-Mobile-POP';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
     /* ★★★ 원하는 그리드 크기로 변경 ★★★ */
     --grid-cols: 10;
@@ -5,14 +12,46 @@
 }
 
 /* 기본 설정 (변경 없음) */
-html, body { height: 100%; margin: 0; overflow: hidden; background-color: #aed581; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; user-select: none; -webkit-tap-highlight-color: transparent; }
+html, body { height: 100%; margin: 0; overflow: hidden; background-color: #aed581; font-family: 'ONE-Mobile-POP', sans-serif; user-select: none; -webkit-tap-highlight-color: transparent; }
 body { display: flex; justify-content: center; align-items: center; }
-.game-container { display: flex; flex-direction: column; width: 95vw; max-width: 420px; height: 95vh; max-height: 850px; align-items: center; gap: 15px; }
+.game-container {
+    display: flex;
+    flex-direction: column;
+    width: 95vw;
+    max-width: 420px;
+    height: 95vh;
+    max-height: 850px;
+    align-items: center;
+    gap: 10px;
+
+    /* ★★★ 수정: 기기가 알려주는 안전 영역 값을 자동으로 사용 ★★★ */
+    padding-top: env(safe-area-inset-top, 20px);
+    box-sizing: border-box;
+}
 #score-display, .time-gauge-container { flex-shrink: 0; }
 #score-display { font-size: clamp(1.5em, 5vw, 2em); font-weight: bold; text-align: center; color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); }
-.time-gauge-container { width: 100%; height: 25px; background-color: #f1f8e9; border-radius: 15px; border: 3px solid #558b2f; overflow: hidden; }
-#time-gauge { width: 100%; height: 100%; background-color: #ffca28; border-radius: 10px; transition: width 0.1s linear; }
+.time-gauge-container {
+    width: 80%;
+    height: 20px; /* ★★★ 게이지 높이를 조금 더 키움 ★★★ */
+    
+    background-color: #72ae47; /* ★★★ 어두운 녹색 배경으로 변경 ★★★ */
+    border-radius: 16px;
+    border:2px solid #b5cf97; /* ★★★ 테두리를 밝은 색으로 변경 ★★★ */
+    overflow: hidden;
+    
+    /* 입체감을 주는 안쪽 그림자 효과 */
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
 
+#time-gauge {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    transition: width 0.1s linear;
+
+    /* ★★★ 노란색 -> 주황색으로 이어지는 그라데이션 적용 ★★★ */
+    background: linear-gradient(to right, #ffeb3b, #e6e066);
+}
 /* 게임 보드와 그리드 스타일 */
 #game-board {
     width: 100%;
@@ -49,11 +88,25 @@ body { display: flex; justify-content: center; align-items: center; }
 
 .apple {
     width: 100%; height: 100%; min-width: 0; min-height: 0;
-    background-color: #ef5350; border-radius: 50%;
+    
+    /* ★★★ 사과 배경에 방사형(동그란) 그라데이션 적용 ★★★ */
+    background: radial-gradient(circle at 65% 35%, #df7757, #d74442);
+    
+    border-radius: 50%;
     display: flex; justify-content: center; align-items: center;
-    font-weight: bold; font-size: clamp(0.8em, 4vw, 1.4em);
-    color: white; cursor: pointer; z-index: 2;
+    font-weight: bold;
+    font-size: clamp(0.8em, 4vw, 1.2em);
+    color: white;
+    cursor: pointer;
+    z-index: 2;
+    
+    /* 그림자로 입체감 추가 */
+    box-shadow: inset 0 -3px 5px rgba(0,0,0,0.2);
+
+    /* ★★★ 사과 안의 숫자에 얇은 테두리 추가 ★★★ */
+    text-shadow: 0px 1px 3px rgba(0,0,0,0.3);
 }
+
 .apple.removed { visibility: hidden; pointer-events: none; }
 
 #selection-box {
@@ -64,9 +117,67 @@ body { display: flex; justify-content: center; align-items: center; }
 #selection-box.valid { background-color: rgba(165, 214, 167, 0.5); border-color: #4caf50; }
 
 /* 오버레이 스타일 (변경 없음) */
-#overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); color: white; display: flex; justify-content: center; align-items: center; z-index: 10; }
-#start-screen, #end-screen { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+#overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%;  background: linear-gradient(to bottom, rgba(255,255,204,1), rgba(229,255,204,1)); color: white; display: flex; justify-content: center; align-items: center; z-index: 10; }
+#start-screen, #end-screen { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;
+    /* ★★★ 추가: 요소들 사이의 세로 간격을 20px로 설정 ★★★ */
+    gap: 0px; }
+/* ▼▼▼ 이 코드를 그대로 복사해서 붙여넣으세요 ▼▼▼ */
+
 #end-screen { display: none; }
-#overlay h2 { font-size: 2em; }
-#overlay p { font-size: 1em; line-height: 1.5; margin: 20px 0; }
-#overlay button { padding: 10px 20px; font-size: 1.2em; border: none; border-radius: 10px; background-color: #ffca28; color: #3e2723; font-weight: bold; }
+
+/* === 오버레이 화면 상세 스타일 === */
+
+/* 제목 스타일 */
+#overlay h2 {
+    font-size: 2.5em;       /* 제목 크기 */
+    margin-bottom: 20px;    /* 제목과 설명 사이 간격 */
+
+    /* --- 그라데이션 적용 부분 --- */
+    background: linear-gradient(45deg, #97cc2c, #95be33, #8bc34a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* 설명 스타일 */
+#overlay p {
+    font-size: 1.5em; /* 설명 크기 */
+    color: #7fb352;
+    line-height: 1.5;
+    margin-bottom: 100px; /* 설명과 버튼 사이 간격 */
+
+    -webkit-text-stroke: 0.1px rgba(0, 0, 0, 0.2); /* 1px 두께의 살짝 투명한 검은색 테두리 */
+    text-stroke: 0.1px rgba(137, 172, 1305, 0.2);
+}
+
+/* 버튼 스타일 */
+#overlay button {
+    font-family: 'ONE-Mobile-POP', sans-serif;
+    padding: 20px 60px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffffff; /* 버튼 안의 글씨색은 흰색으로 유지 */
+    
+    border-radius: 50px;
+    border: 3px solid #fff; /* 테두리는 흰색으로 하면 더 예뻐요 */
+    
+    -webkit-text-stroke: 0.1px rgba(0, 0, 0, 0.2); /* 1px 두께의 살짝 투명한 검은색 테두리 */
+    text-stroke: 0.1px rgba(137, 172, 1305, 0.2);
+
+    /* --- 그라데이션 적용 부분 --- */
+    background: linear-gradient(45deg, #aed581, #8bc34a);
+    
+    box-shadow: 0 4px 8px rgba(72, 80, 5, 0.4);
+    cursor: pointer;
+    transition: all 0.2s ease; /* transition에 all과 0.2s를 주면 더 부드러워요 */
+}
+
+/* 버튼에 마우스를 올렸을 때 */
+#overlay button:hover {
+    transform: scale(1.05);
+}
+
+/* 버튼을 클릭하는 순간 */
+#overlay button:active {
+    transform: scale(0.95);
+}
